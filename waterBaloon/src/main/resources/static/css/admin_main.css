@@ -1,0 +1,319 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: -0.75px;
+}
+
+/*article(상단메뉴바)시작*/
+article {
+  width: 1600px;
+  background: lightgoldenrodyellow;
+  margin-top: 20px;
+
+}
+
+.article {
+  max-width: 1600px;
+
+  margin: 0 auto;
+  position: sticky;
+  width: 1600px;
+  z-index: 4;
+
+  top: 124px;
+
+
+}
+
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  height: 50px;
+  font-size: 20px;
+  padding-top: 10px;
+}
+
+.article-menu {
+  text-align: center;
+  display: grid;
+}
+
+.black a {
+  color: black;
+}
+
+.small {
+  font-size: 10px;
+}
+
+.hide {
+  display: none;
+  font-size: 10px;
+}
+
+/*article(상단메뉴바) 끝*/
+section {
+  width: 100%;
+}
+
+
+
+.transverse {
+  display: flex;
+}
+
+li a {
+  text-decoration: none;
+  color: gray;
+}
+
+a {
+  color: black;
+}
+
+.logo {
+  width: 1600px;
+  padding-bottom: 60px;
+  display: flex;
+  justify-content: space-around;
+  
+  border-bottom: 6px solid lightgray;
+}
+
+.logo div {
+  border-radius: 80px;
+  text-align: center;
+  background-color: lightgray;
+  width: 100px;
+  /* 크기 조정 */
+  height: 100px;
+  /* 크기 조정 */
+  padding: 25px 15px 5px 15px;
+  /* 간격 추가 */
+  display: flex;
+  /* 가로로 배치 */
+  justify-content: space-between;
+}
+
+.logo img {
+  width: 80%;
+  /* 이미지가 div 크기에 맞도록 조정 */
+  height: auto;
+}
+
+.logo :nth-child(1) {
+  margin-left: 0px;
+}
+
+.logo p {
+  font-size: 25px;
+}
+
+
+.column {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;margin-right: 15px;
+  margin-top: 20px;
+  
+}
+.logo :nth-child(5){margin-right: 30px;}
+
+
+
+
+.column p {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.recommendation {
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.plus {
+  margin-left: 1320px;
+}
+
+/*슬라이드효과*/
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  width: 1600px;
+  height: 500px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.slides {
+  width: 500%;
+  height: 500px;
+  display: flex;
+}
+
+.slides input {
+  display: none;
+}
+
+.slide {
+  width: 20%;
+  transition: 2s;
+}
+
+.slide img {
+  width: 100%;
+  height: 500px;
+}
+
+.navigation-manual {
+  position: absolute;
+  width: 1470px;
+  margin-top: -40px;
+  display: flex;
+  justify-content: center;
+}
+
+.manual-btn {
+  border: 2px solid black;
+  padding: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.manual-btn:not(:last-child) {
+  margin-right: 40px;
+}
+
+.manual-btn:hover {
+  background: white;
+}
+
+#radio1:checked~.first {
+  margin-left: 0;
+}
+
+#radio2:checked~.first {
+  margin-left: -10%;
+}
+
+.navigation-auto {
+  position: absolute;
+  display: flex;
+  width: 1470px;
+  justify-content: center;
+  margin-top: 460px;
+}
+
+.navigation-auto div {
+  padding: 5px;
+  border-radius: 10px;
+  transition: 1s;
+}
+
+.navigation-auto div:not(:last-child) {
+  margin-right: 40px;
+}
+
+#radio1:checked~.navigation-auto .auto-btn1 {
+  background: white;
+}
+
+#radio2:checked~.navigation-auto .auto-btn2 {
+  background: white;
+}
+
+.leftset {
+  display: flex;
+}
+
+.leftset p {
+  margin-right: 1300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.leftset2 p {
+  margin-right: 1400px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/*길게 슬라이드*/
+#slider {
+  overflow: hidden;
+  position: relative;
+  /* // 이미지 보여지는 뷰 부분만큼 px조절 */
+  width: 1600px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.image-box {
+  /* 원본+클론의 총 합 */
+  width: 3060px;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  animation: bannermove 20s linear infinite;
+}
+.image-box img{width: 300px;height: 300px;}
+.image-box>div {
+  margin: 0px -1px 0px 0px;
+}
+
+@keyframes bannermove {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+.b {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.bb {
+  font-weight: 600;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.g {
+  font-size: 14px;
+  color: gray;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.columnall {
+  display: flex;
+  flex-direction: column;
+}

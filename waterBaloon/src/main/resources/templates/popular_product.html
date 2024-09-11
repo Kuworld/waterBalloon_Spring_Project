@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/default_layout}">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물풍선</title>
+    <link rel="stylesheet"type="text/css" href="/css/new_product.css">
+<link rel="stylesheet"type="text/css" href="/css/nav.css">
+    
+  </head>
+
+  <body layout:fragment="content">
+   
+    <article class="article">
+      <div class="menu">
+        <ul class="main-menu">
+          <div class="article-menu">
+            <li class="black"><a th:href=@{/}>홈</a></li>
+            <li class="hide">●</li>
+          </div>
+          <div class="article-menu">
+            <li><a href="new_product">신상품</a></li>
+            <li class="hide">●</li>
+          </div>
+          <div class="article-menu">
+            <li><a href="popular_product">인기상품</a></li>
+            <li class="small">●</li>
+          </div>
+        </ul>
+      </div>
+    </article>
+    <section>
+      <div class="itr3">
+        <div class="itr2">
+          <div class="itr1">
+            <a href=""><img src="/images/items/mongmu2000_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">몽베스트</p>
+                <p class="g">(1병당 767원)</p>
+              </div>
+              <p class="bb">[무라벨] 몽베스트 2L * 12병</p>
+              <p class="b">9,200원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/san2000_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">산수음료</p>
+                <p class="g">(1병당 675원)</p>
+              </div>
+              <p class="bb">[저탄소제품] EVERYDAY 가벼운 샘 2L * 12병</p>
+              <p class="b">8,100원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/mongmu500_40.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">몽베스트</p>
+                <p class="g">(1병당 299원)</p>
+              </div>
+              <p class="bb">[무라벨] 몽베스트 생수 500mL * 40병</p>
+              <p class="b">11,954원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/sam2000_6.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">삼다수</p>
+                <p class="g">(1병당 1,220원)</p>
+              </div>
+              <p class="bb">삼다수 2L * 6병</p>
+              <p class="b">7,320원</p>
+            </div>
+          </div>
+        </div>
+        <div class="itr2">
+          <div class="itr1">
+            <a href=""><img src="/images/items/icis2000_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">롯데칠성</p>
+                <p class="g">(1병당 908원)</p>
+              </div>
+              <p class="bb">아이시스 8.0 2L * 12병</p>
+              <p class="b">10,900원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/sam500_20.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">삼다수</p>
+                <p class="g">(1병당 509원)</p>
+              </div>
+              <p class="bb">삼다수 500mL * 20병</p>
+              <p class="b">10,170원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/iciseco2000_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">롯데칠성</p>
+                <p class="g">(1병당 908원)</p>
+              </div>
+              <p class="bb">아이시스 8.0 ECO 2L * 12병</p>
+              <p class="b">10,900원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/san500_40.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">산수음료</p>
+                <p class="g">(1병당 263원)</p>
+              </div>
+              <p class="bb">[저탄소제품] EVERYDAY 가벼운 샘 500mL * 40병</p>
+              <p class="b">10,500원</p>
+            </div>
+          </div>
+        </div>
+        <div class="itr2">
+          <div class="itr1">
+            <a href=""><img src="/images/items/muk2000_24.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">먹는샘물</p>
+                <p class="g">(1병당 579원)</p>
+              </div>
+              <p class="bb">아이스워터 2L * 24병</p>
+              <p class="b">13,900원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/muk2000_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">먹는샘물</p>
+                <p class="g">(1병당 675원)</p>
+              </div>
+              <p class="bb">아이스워터 2L * 12병</p>
+              <p class="b">8,100원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/muk500_40.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">먹는샘물</p>
+                <p class="g">(1병당 238원)</p>
+              </div>
+              <p class="bb">아이스워터 500mL * 40병</p>
+              <p class="b">9,500원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/iciseco2000_24.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">롯데칠성</p>
+                <p class="g">(1병당 871원)</p>
+              </div>
+              <p class="bb">아이시스 8.0 ECO 2L * 24병</p>
+              <p class="b">20,900원</p>
+            </div>
+          </div>
+        </div>
+        <div class="itr2">
+          <div class="itr1">
+            <a href=""><img src="/images/items/mongmu2000_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">몽베스트</p>
+                <p class="g">(1병당 767원)</p>
+              </div>
+              <p class="bb">몽베스트 2L * 12병</p>
+              <p class="b">9,200원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/iciseco1500_12.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">롯데칠성</p>
+                <p class="g">(1병당 792원)</p>
+              </div>
+              <p class="bb">아이시스 8.0 ECO 1.5L * 12병</p>
+              <p class="b">9,500원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/mongmu500_40.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">몽베스트</p>
+                <p class="g">(1병당 316원)</p>
+              </div>
+              <p class="bb">몽베스트 500mL * 40병</p>
+              <p class="b">12,640원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/icis1000_18.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">롯데칠성</p>
+                <p class="g">(1병당 606원)</p>
+              </div>
+              <p class="bb">[무라벨] 아이시스 8.0 1L * 18병</p>
+              <p class="b">10,900원</p>
+            </div>
+          </div>
+        </div>
+        <div class="itr4">
+          <div class="itr1">
+            <a href=""><img src="/images/items/icis500_40.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">롯데칠성</p>
+                <p class="g">(1병당 413원)</p>
+              </div>
+              <p class="bb">아이시스 8.0 500mL * 40병</p>
+              <p class="b">16,500원</p>
+            </div>
+          </div>
+          <div class="itr1">
+            <a href=""><img src="/images/items/mongmu330_40.jpg"></a>
+            <div>
+              <div class="transverse">
+                <p class="gg">몽베스트</p>
+                <p class="g">(1병당 270원)</p>
+              </div>
+              <p class="bb">[무라벨] 몽베스트 생수 330mL * 40병</p>
+              <p class="b">10,800원</p>
+            </div>
+          </div>
+          
+      </div>
+    </section>
+  </body>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/admin_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin - Add Item</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<link rel="stylesheet" th:href="@{/css/admin_header.css}">
+  
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body>
+<div class="container" layout:fragment="content">
+    <h1>Add New Item</h1>
+    <form th:action="@{/admin/add_item}" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="category">Category</label>
+            <select id="category" name="category" class="form-control">
+                <option th:each="category : ${categories}" th:value="${category.c1Cat}" th:text="${category.c1Name}"></option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="subCategory">Sub Category</label>
+            <select id="subCategory" name="subCategory" class="form-control">
+                <!-- Options will be populated by JavaScript -->
+                <script>
+    $(document).ready(function() {
+        $('#category').change(function() {
+            var categoryId = $(this).val();
+            $.ajax({
+                url: '/admin/subcategories',
+                type: 'GET',
+                data: { categoryId: categoryId },
+                success: function(data) {
+                    var subCategorySelect = $('#subCategory');
+                    subCategorySelect.empty();
+                    $.each(data, function(index, subCategory) {
+                        subCategorySelect.append('<option value="' + subCategory.c2Cat + '">' + subCategory.c2Name + '</option>');
+                    });
+                }
+            });
+        });
+    });
+</script>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="iName">Name</label>
+            <input type="text" id="iName" name="iName" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="iPrice">Price</label>
+            <input type="number" id="iPrice" name="iPrice" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="iMaker">Maker</label>
+            <input type="text" id="iMaker" name="iMaker" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="iImg1">Image 1</label>
+            <input type="file" id="iImg1" name="iImg1" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="iImg2">Image 2</label>
+            <input type="file" id="iImg2" name="iImg2" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="iImg3">Image 3</label>
+            <input type="file" id="iImg3" name="iImg3" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="iContent">Content</label>
+            <textarea id="iContent" name="iContent" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="iContentDet">Content Detail</label>
+            <textarea id="iContentDet" name="iContentDet" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="iStock">Stock</label>
+            <input type="number" id="iStock" name="iStock" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="iRegstat">Registration Status</label>
+            <input type="number" id="iRegstat" name="iRegstat" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Add Item</button>
+    </form>
+</div>
+
+
+</body>
+</html>

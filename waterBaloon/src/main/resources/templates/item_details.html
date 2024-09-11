@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+    layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${item.iName}">Item Details</title>
+    <link rel="stylesheet" href="/css/details.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <meta name="_csrf" th:content="${_csrf.token}" />
+    <script type="text/javascript">
+        const unitPrice = [[${item.iPrice}]];
+
+        function changeQuantity(amount) {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value);
+            quantity = isNaN(quantity) ? 1 : quantity;
+            quantity += amount;
+            if (quantity < 1) quantity = 1;
+            quantityInput.value = quantity;
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            const quantity = document.getElementById('quantity').value;
+            document.getElementById('quantityInput').value = quantity;
+            const totalPrice = unitPrice * quantity;
+            document.getElementById('totalPrice').textContent = totalPrice.toLocaleString() + '원';
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            updateTotalPrice();
+        });
+
+        function confirmAddToCart(event) {
+            event.preventDefault();
+
+            const form = document.getElementById("add-to-cart-form");
+            const formData = new FormData(form);
+
+            console.log("Form Data:", formData);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: new URLSearchParams(formData),
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="_csrf"]').getAttribute('content'),
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(response => {
+                console.log("Response:", response);
+                if (response.ok) {
+                    if (confirm("장바구니로 이동하시겠습니까?")) {
+                        window.location.href = "/user/cart";
+                    } else {
+                        alert("상품이 장바구니에 담겼습니다.");
+                    }
+                } else {
+                    alert("로그인이 필요합니다.");
+                    window.location.href = "/user/login";
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert("장바구니에 담는 도중 오류가.");
+            });
+        }
+    </script>
+</head>
+<body layout:fragment="content">
+    <section class="aa">
+        <div class="info">
+            <div>
+                <img th:src="@{'/images/items/' + ${item.iImg1}}" alt="Product Image">
+            </div>
+            <div class="info3">
+                <div class="q" th:text="${item.iMaker}"></div>
+                <div class="qq" th:text="${item.iContent}"></div>
+                <div class="qq" th:text="${item.iName}"></div>
+
+                <div class="" th:text="${item.iContent}"></div>
+                <div class="text-black-50" th:text="${item.iContentDet}"></div>
+
+                <div>
+                    <div class="quantity-container">
+                        <button type="button" class="pad1" onclick="changeQuantity(-1)">-</button>
+                        <input type="text" class="inN" id="quantity" value="1" min="1" oninput="updateTotalPrice()" onchange="updateTotalPrice()">
+                        <button type="button" class="pad2" onclick="changeQuantity(1)">+</button>
+                    </div>
+                    <div class="price-container">
+                        <div class="price1">
+                            단가: <span id="unitPrice" th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'"></span>
+                        </div>
+                        <div class="price2">
+                            총 가격: <span class="qqq" id="totalPrice" th:text="${item.iPrice} + '원'"></span>
+                        </div>
+                    </div>
+                    <form id="add-to-cart-form" th:action="@{/cart/add}" method="post" class="order" onsubmit="confirmAddToCart(event)">
+                        <input type="hidden" name="itemId" th:value="${item.iNum}" />
+                        <input type="hidden" id="quantityInput" name="quantity" value="1" />
+                        <button type="submit" class="button">장바구니 담기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="user-questions">
+        <h2>Q  &  A</h2>
+        <form class="qna" th:action="@{/questions/add}" method="post" sec:authorize="isAuthenticated()">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+            <input type="hidden" name="itemId" th:value="${item.iNum}" />
+            <div class="form-group">
+                <label for="question">상품 Q & A 작성</label>
+                <textarea id="question" name="question" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">작성</button>
+        </form>
+        <div sec:authorize="!isAuthenticated()">
+            <p>
+                문의 사항을 작성하려면 <strong> <a class="qnalogin" th:href="@{/user/login}">로그인</a> </strong> 해주세요.
+            </p>
+        </div>
+
+        <h3 style="text-align: left">문의 목록</h3>
+        <div th:each="question : ${questions}">
+            <div class="question">
+                <p>
+                    <strong th:text="${question.userName}"></strong>님: <span th:text="${question.content}"></span>
+                    <br><small th:text="${#temporals.format(question.createdDate, 'yyyy-MM-dd HH:mm:ss')}"></small>
+                </p>
+                <div class="answer" th:if="${question.answer}">
+                    <p>
+                        <strong>⌞답변:</strong> <span th:text="${question.answer}"></span>
+                        <br><small th:text="${#temporals.format(question.answeredDate, 'yyyy-MM-dd HH:mm:ss')}"></small>
+                    </p>
+                </div>
+                <div class="answer-form" sec:authorize="hasRole('ROLE_ADMIN')" th:if="${question.answer == null}">
+                    <form th:action="@{/questions/answer}" method="post">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                        <input type="hidden" name="questionId" th:value="${question.id}" />
+                        <input type="hidden" name="itemId" th:value="${item.iNum}" />
+                        <div class="form-group">
+                            <label for="answer">답변 내용</label>
+                            <textarea id="answer" name="answer" class="form-control" rows="2" column="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-secondary">답변하기</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

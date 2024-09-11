@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{/layouts/admin_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/nav.css">
+</head>
+<body>
+
+<article layout:fragment="content">
+   
+    <h1>Welcome, Admin!</h1>
+    <p>This is the admin dashboard.</p>
+     <a th:href="@{/user/logout}">Logout</a>
+     <a th:href="@{/admin/add_item}"> 상품 추가</a>
+</article>
+</body>
+</html>

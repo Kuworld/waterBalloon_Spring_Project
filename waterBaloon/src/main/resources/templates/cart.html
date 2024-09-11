@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <script src="/js/cart.js"></script>
+</head>
+<body onload="updateOrderSummary()" layout:fragment="content">
+<section class="cart-section" >
+    <h2>장바구니</h2>
+    <div>
+        <input type="checkbox" id="select-all" onclick="toggleAllCheckboxes(this)" checked>
+        <label for="select-all">전체 선택</label>
+        
+        <button type="button" onclick="submitForm('/cart/remove')">삭제</button>
+    </div>
+    <form id="cart-form" method="post" th:action="@{/cart/remove}">
+        <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+        <div class="cart-items">
+            <div th:each="item : ${cart.items}" class="cart-item">
+                <div class="cart-item-header">
+                    <input type="checkbox" class="item-checkbox" name="cartItemIds" th:value="${item.id}" 
+                           th:attr="data-price=${item.item.iPrice},data-quantity=${item.quantity}" 
+                           onclick="updateOrderSummary()" checked>
+                </div>
+                <div class="cart-item-body">
+                    <div class="cart-item-image">
+                        <img th:src="@{'/images/items/' + ${item.item.iImg1}}" alt="Product Image">
+                    </div>
+                    <div class="cart-item-details">
+                        <div class="item-name" th:text="${item.item.iName}"></div>
+                         <div class="item-content">
+                         <span th:text="${item.item.iContent}"></span>
+                        </div>
+                        <div class="item-price">
+                            <span th:text="${#numbers.formatInteger(item.item.iPrice, 3, 'COMMA')} + '원'"></span>
+                        </div>
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="item-quantity">
+                          수 량 : <span th:text="${item.quantity}"></span>
+                        </div>
+                       
+                        <div class="item-total-price">
+                            <span th:text="${#numbers.formatInteger(item.item.iPrice * item.quantity,3,'COMMA')} + '원'"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="order-summary">
+        <div>주문금액 <span id="totalAmount">0원</span></div>
+        <button type="button" id="orderButton">0 건 주문하기</button>
+    </div>
+</section>
+</body>
+</html>

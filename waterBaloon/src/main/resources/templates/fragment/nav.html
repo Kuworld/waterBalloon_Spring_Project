@@ -1,0 +1,69 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<nav class="side-bar" th:fragment="navFragment">
+	<section class="side-bar__icon-box">
+		<section class="side-bar__icon-1">
+			<div></div>
+			<div></div>
+			<div></div>
+		</section>
+	</section>
+
+	<ul sec:authorize="isAnonymous()">
+		<li th:each="category : ${categories}"><a
+			th:href="@{'/' + ${category.c1Name} + '_all'}"> <i
+				class="fa-solid fa-cat"></i> <span th:text="${category.c1Name}"></span>
+		</a>
+
+			<ul>
+				<li th:each="subCategory : ${category.subCategories}"><a
+					th:href="@{'/' + ${category.c1Name} + '_' + ${subCategory.c2Name}}"
+					th:text="${subCategory.c2Name}"></a></li>
+			</ul></li>
+	</ul>
+	<ul sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')">
+		<li th:each="category : ${categories}"><a
+			th:href="@{'/' + ${category.c1Name} + '_all'}"> <i
+				class="fa-solid fa-cat"></i> <span th:text="${category.c1Name}"></span>
+		</a>
+
+			<ul>
+				<li th:each="subCategory : ${category.subCategories}"><a
+					th:href="@{'/' + ${category.c1Name} + '_' + ${subCategory.c2Name}}"
+					th:text="${subCategory.c2Name}"></a></li>
+			</ul></li>
+	</ul>
+	<ul sec:authorize="hasRole('ROLE_ADMIN')">
+		<li th:each="category : ${categories}"><a
+			th:href="@{'/' + ${category.c1Name} + '_all'}"> <i
+				class="fa-solid fa-cat"></i> <span th:text="${category.c1Name}"></span>
+		</a>
+
+			<ul>
+				<li th:each="subCategory : ${category.subCategories}"><a
+					th:href="@{'/' + ${category.c1Name} + '_' + ${subCategory.c2Name}}"
+					th:text="${subCategory.c2Name}"></a></li>
+			</ul></li>
+		<hr>
+		<span class="admin">관리자 전용</span>
+		</li>
+		<li><a href="#">상품관련</a>
+			<ul>
+				<li><a th:href="@{/admin/add_item}"> 상품 등록</a></li>
+				<li><a th:href="@{/admin/items}">상품조회 <small>(수정 / 삭제)</small></a></li>
+				<li><a href="#">주문조회</a></li>
+			</ul></li>
+		<li><a href="#">문의 및 안내</a>
+			<ul>
+				<li><a href="#">문의사항</a></li>
+				<li><a href="#">공지사항</a></li>
+				<li><a href="#">리뷰관리</a></li>
+			</ul></li>
+		<li><a th:href="@{/admin/users}">회원관리</a>
+			</li>
+	</ul>
+</nav>
+</html>
+
+
+

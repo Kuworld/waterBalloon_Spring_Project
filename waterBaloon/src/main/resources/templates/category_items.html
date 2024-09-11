@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <title th:text="'Items in ' + ${categoryName} + ((${subCategoryName} != null) ? ': ' + ${subCategoryName} : '')"></title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <script th:src="@{/js/bootstrap.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/cate.css}">
+</head>
+<body layout:fragment="content">
+<article>
+    <div class="main-container">
+        <div class="sub-menu"></div>
+        <h1 th:text=" ${categoryName} + ((${subCategoryName} != null) ? ': ' + ${subCategoryName} : '')"></h1>
+        <div class="row">
+            <div class="col-md-3" th:each="item : ${items}">
+                <a th:href="@{'/item_details/' + ${item.iNum}}">
+                    <div class="card mb-4 shadow-sm">
+                        <img class="card-img-top" th:src="@{'/images/items/' + ${item.iImg1}}" alt="Card image cap">
+                        <div class="card-body">
+                            <div class="d-flex">
+                                <div class="fs-6 fw-bold lh-base" th:text="${item.iMaker}"></div>
+                                &nbsp;
+                                 <div class="text-black-50" th:text="${item.iContentDet}"></div>
+                            </div>
+                            <div class="fs-5 fw-semibold lh-lg" th:text="${item.iContent}"></div>
+                            <div class="justify-content-between align-items-center">
+                                <div>
+                                    <h5 class="fs-4 fw-bold"
+                                        th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'"></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</article>
+</body>
+</html>

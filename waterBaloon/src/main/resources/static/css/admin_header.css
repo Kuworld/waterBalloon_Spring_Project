@@ -1,0 +1,78 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  letter-spacing: -0.75px;
+}
+
+/*header css시작*/
+header {
+  width: 100%;
+  margin: 0 auto;
+
+}
+
+.header {
+  background-color: pink;
+  color: #fff;
+  padding: 10px 0;
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  
+}
+
+.header-mar {
+  margin-right: 20px;
+}
+
+.water {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  width: 350px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: rgb(233, 233, 233);
+}
+
+.gg-search {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  transform: scale(var(--ggs, 1));
+  width: 16px;
+  height: 16px;
+  border: 2px solid;
+  border-radius: 100%;
+  margin-left: -30px;
+  margin-top: 5px;
+}
+
+.gg-search::after {
+  content: "";
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  border-radius: 3px;
+  width: 2px;
+  height: 8px;
+  background: currentColor;
+  transform: rotate(-45deg);
+  top: 10px;
+  left: 12px
+}
+
+.admin{
+  font-size: 25px;
+  padding-left: 50px;
+}
+
+/*header css 끝*/

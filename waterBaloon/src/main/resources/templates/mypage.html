@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	 xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+	layout:decorate="~{layouts/default_layout}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>물풍선</title>
+<link rel="stylesheet" href="/css/new-product.css">
+<link rel="stylesheet" href="/css/header.css">
+<script src="/src/main/resources/static/js/article.js"></script>
+<link rel="stylesheet" href="/css/nav.css">
+
+</head>
+<body layout:fragment="content">
+	<div class="top">
+		<div>
+		<p>이미지 박스 구역 변수</p>
+		 <main>
+        <h1>My Page</h1>
+        <div>
+            <p>Username: <span th:text="${users.username}"></span></p>
+            <p>Email: <span th:text="${users.email}"></span></p>
+            <p>Telephone: <span th:text="${users.tel}"></span></p>
+            <p>Address: <span th:text="${users.addr}"></span></p>
+            <p>Detailed Address: <span th:text="${users.daddr}"></span></p>
+        </div>
+    </main>
+		</div>		
+	</div>
+	<hr>
+	<div class="menubar">
+		<p><a href="#">주문 배송</a></p>
+		<p><a href="#">리뷰</a></p>
+		<p><a href="#">쿠폰</a></p>
+		<p><a href="#">포인트</a></p>
+		<p><a href="#">마일리지</a></p>		
+	</div>
+	<hr>
+	<div>
+	<p>개인 정보 처리 방침</p>
+	</div>
+</body>
+
+</html>

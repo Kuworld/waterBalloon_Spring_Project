@@ -1,0 +1,37 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- <link rel="stylesheet" href="/css/header.css"> -->
+<meta charset="UTF-8">
+<header class="header" th:fragment="headerFragment">
+    <div id="wrap">
+        <div class="water">
+            <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/}"><img  th:src="@{/images/logo/logo2.png}" width="100" height="100"></a>
+            <a sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')" th:href="@{/}"><img  th:src="@{/images/logo/logo.png}" width="100" height="100"></a>
+            <a sec:authorize="isAnonymous()" th:href="@{/}"><img  th:src="@{/images/logo/logo.png}" width="100" height="100"></a>
+            <div class="search">
+                <input type="text" placeholder="검색어를 입력해주세요" class="input">
+                <a href="main.html"><i class="gg-search"></i></a>
+            </div>
+            <div class="header-mar">
+                <div sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')"><!-- 로그인 한 후 -->
+                    <span th:text="${#authentication.principal.username} + ' 님'"></span>
+                   &nbsp; | &nbsp; <a th:href="@{/user/cart}">장바구니</a>
+                   &nbsp; | &nbsp; <a th:href="@{/user/mypage2}">마이페이지</a>
+                   &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
+                </div>
+                
+                <div sec:authorize="hasRole('ROLE_ADMIN')"><!--admin 로그인 한 후 -->
+                    <span th:text="${#authentication.principal.username} + ' 님'"></span>
+                   &nbsp; | &nbsp; <a th:href="@{/}"> 홈 </a>
+                   &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
+                </div>
+                
+                <div sec:authorize="isAnonymous()"><!-- 로그인 하기 전 -->
+                    <a th:href="@{/user/login}">로그인</a>
+                    &nbsp; | &nbsp; <a th:href="@{/user/join}">회원가입</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layouts/admin_layout}">
+<head>
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function fetchSubcategories() {
+            const categoryId = document.getElementById('category').value;
+            fetch(`/admin/subcategories?categoryId=${categoryId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const subCategorySelect = document.getElementById('subcategory');
+                    subCategorySelect.innerHTML = '';
+                    data.forEach(subCategory => {
+                        const option = document.createElement('option');
+                        option.value = subCategory.c2Cat;
+                        option.text = subCategory.c2Name;
+                        subCategorySelect.add(option);
+                    });
+                });
+        }
+
+        window.onload = function() {
+            fetchSubcategories();
+        };
+    </script>
+</head>
+<body layout:fragment="content">
+    <div class="container mt-5">
+        <h1 class="mb-4">Edit Item</h1>
+        <form th:action="@{/admin/edit_item}" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="id" th:value="${item.iNum}" />
+            <div class="form-group">
+                <label for="iName">Item Name</label>
+                <input type="text" class="form-control" id="iName" name="iName" th:value="${item.iName}" />
+            </div>
+            <div class="form-group">
+                <label for="iPrice">Price</label>
+                <input type="number" class="form-control" id="iPrice" name="iPrice" th:value="${item.iPrice}" />
+            </div>
+            <div class="form-group">
+                <label for="iStock">Stock</label>
+                <input type="number" class="form-control" id="iStock" name="iStock" th:value="${item.iStock}" />
+            </div>
+            <div class="form-group">
+                <label for="iContent">Content</label>
+                <textarea class="form-control" id="iContent" name="iContent" th:text="${item.iContent}"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" name="category" onchange="fetchSubcategories()">
+                    <option th:each="category : ${categories}" th:value="${category.c1Cat}" th:text="${category.c1Name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="subcategory">SubCategory</label>
+                <select class="form-control" id="subcategory" name="subCategory">
+                    <option th:each="subcategory : ${subCategories}" th:value="${subcategory.c2Cat}" th:text="${subcategory.c2Name}"></option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="iImg1">Image 1</label>
+                <input type="file" class="form-control-file" id="iImg1" name="iImg1" />
+                <img th:src="@{'/images/items/' + ${item.iImg1}}" alt="Item Image 1" class="mt-2" style="max-width: 200px; max-height: 200px;">
+            </div>
+            <div class="form-group">
+                <label for="iImg2">Image 2</label>
+                <input type="file" class="form-control-file" id="iImg2" name="iImg2" />
+                <img th:src="@{'/images/items/' + ${item.iImg2}}" alt="Item Image 2" class="mt-2" style="max-width: 200px; max-height: 200px;">
+            </div>
+            <div class="form-group">
+                <label for="iImg3">Image 3</label>
+                <input type="file" class="form-control-file" id="iImg3" name="iImg3" />
+                <img th:src="@{'/images/items/' + ${item.iImg3}}" alt="Item Image 3" class="mt-2" style="max-width: 200px; max-height: 200px;">
+            </div>
+            <button type="submit" class="btn btn-primary"> 저 장 </button>
+            <a th:href="@{/admin/items}" class="btn btn-secondary">취 소</a>
+        </form>
+    </div>
+</body>
+</html>

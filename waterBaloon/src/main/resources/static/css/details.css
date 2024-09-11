@@ -1,0 +1,279 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.main-menu, .main-menu2 {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    height: 50px;
+    font-size: 20px;
+    padding-top: 10px;
+    background: lightcyan;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    border-bottom: 2px solid #09baff;
+}
+
+.article-menu {
+    text-align: center;
+    display: grid;
+}
+
+.hide {
+    display: none;
+    font-size: 10px;
+}
+
+.small {
+    font-size: 10px;
+}
+
+.article {
+    max-width: 1600px;
+    width: 100%;
+    margin: 0 auto;
+    position: sticky;
+    z-index: 4;
+    top: 124px;
+}
+
+.bottom-line {
+    border-bottom: 2px solid black;
+}
+
+article {
+    width: 100%;
+    background: lightgoldenrodyellow;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.info img {
+    width: 700px;
+    height: 700px;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.info3 {
+    flex: 1;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    border: 1px solid lightgray;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.aa {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    align-items: center;
+}
+
+.q {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #09baff;
+}
+
+.qq, .qqq {
+    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.qqqq {
+    font-size: 26px;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+select {
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.button {
+    background: #09baff;
+    border: 1px solid #09baff;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: background 0.3s;
+}
+
+.button:hover {
+    background: #007acc;
+}
+
+.inN {
+    text-align: center;
+    width: 50px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 0 5px;
+}
+
+.quantity-container {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pad1, .pad2 {
+    padding: 10px;
+    background-color: lightgray;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.pad1:hover, .pad2:hover {
+    background-color: lightcyan;
+}
+
+.order {
+    margin-top: 40px;
+}
+
+.price1 {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #666;
+}
+
+.price2 {
+    margin-top: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+}
+
+.question {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width:900px;
+}
+
+.question:hover {
+    background-color: #f0f0f0;
+}
+
+.answer {
+    /* display: none; */
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+form .form-group {
+    margin-bottom: 15px;
+}
+
+form .form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical;
+}
+
+form .btn {
+    background-color: #09baff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+form .btn:hover {
+    background-color: #007acc;
+}
+
+.user-questions {
+    margin: auto;
+    align-items: center;
+    width: 100%;
+    max-width:910px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.qna{
+	
+	width:900px;
+	margin-right: 20px;
+}
+
+.qnalogin{
+	
+	color:red
+	
+}

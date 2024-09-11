@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layouts/admin_layout}">
+<head>
+    <title>Admin - Manage Items</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/admin_header.css}">
+    <link rel="stylesheet" th:href="@{/css/nav.css}">
+    <style type="text/css">
+        img {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script>
+        function confirmDelete(event) {
+            if (!confirm('정말 삭제하시겠습니까?')) {
+                event.preventDefault();
+            }
+        }
+    </script>
+</head>
+<body layout:fragment="content">
+    <div class="container mt-5">
+        <h1>상 품 조 회</h1>
+        <form class="form-inline mb-3">
+            <input type="text" class="form-control mr-2" name="searchTerm" placeholder="검색">
+            <select class="form-control mr-2" name="categoryId">
+                <option value="">ALL</option>
+                <option th:each="category : ${categories}" th:value="${category.c1Cat}" th:text="${category.c1Name}"></option>
+            </select>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>상 품 번 호 </th>
+                    <th> 사 진 </th>
+                    <th>상 품 명</th>
+                    <th>가   격  </th>
+                    <th>재   고 </th>
+                    <th>수정/삭제</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="item : ${items}">
+                    <td th:text="${item.iNum}"> 상 품 번 호 </td>
+                    <td> <img th:src="@{'/images/items/' + ${item.iImg1}}"> </td>
+                    <td th:text="${item.iContent}">상 품 명</td>
+                    <td th:text="${item.iPrice}">가 격</td>
+                    <td th:text="${item.iStock}">재  고</td>
+                    <td>
+                        <a th:href="@{'/admin/edit_item/' + ${item.iNum}}" class="btn btn-warning">수 정 </a>
+                        <a th:href="@{'/admin/delete_item/' + ${item.iNum}}" class="btn btn-danger" onclick="confirmDelete(event)">삭 제 </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

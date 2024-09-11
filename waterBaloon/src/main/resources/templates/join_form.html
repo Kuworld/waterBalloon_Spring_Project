@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/default_layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link rel="stylesheet" th:href="@{/css/joinform.css}">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <link rel="stylesheet" href="/css/nav.css">
+    
+   <style type="text/css">
+   	.error{
+   	
+   		color:red;
+   	}
+   </style>
+</head>
+<body layout:fragment="content">
+    <section class="loginPage">
+        <div class="register-box">
+            <div class="login-container">
+                <form th:action="@{/user/join}" th:object="${users}" method="POST">
+                    <div th:if="${#fields.hasErrors('name')}" class="error">
+                        <p th:errors="*{name}">이름 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="name">이 름 </label>
+                        <input type="text" id="name" th:field="*{name}" required>
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('username')}" class="error">
+                        <p th:errors="*{username}">아이디 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="username">아 이 디</label>
+                        <input type="text" id="username" th:field="*{username}" required>
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('password')}" class="error">
+                        <p th:errors="*{password}">비밀번호 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">비 밀 번 호</label>
+                        <input type="password" id="password" th:field="*{password}" required>
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('confirmPassword')}" class="error">
+                        <p th:errors="*{confirmPassword}">비밀번호 확인 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmPassword">비 밀 번 호 확 인</label>
+                        <input type="password" id="confirmPassword" th:field="*{confirmPassword}" required>
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('tel')}" class="error">
+                        <p th:errors="*{tel}">전화번호 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="tel">전 화 번 호</label>
+                        <input type="text" id="tel" th:field="*{tel}">
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('email')}" class="error">
+                        <p th:errors="*{email}">이메일 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" th:field="*{email}">
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('addr')}" class="error">
+                        <p th:errors="*{addr}">주소 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="addr">주 소</label>
+                        <input type="text" id="addr" th:field="*{addr}" required>
+                        <button type="button" onclick="searchAddress()">주소 검색</button>
+                    </div>
+
+                    <div th:if="${#fields.hasErrors('daddr')}" class="error">
+                        <p th:errors="*{daddr}">상세주소 오류</p>
+                    </div>
+                    <div class="input-group">
+                        <label for="daddr">상 세 주 소</label>
+                        <input type="text" id="daddr" th:field="*{daddr}">
+                    </div>
+
+                    <button class="register-button" type="submit">회원가입</button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <script>
+        function searchAddress() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = data.address;
+                    var extraAddr = '';
+
+                    if (data.addressType === 'R') {
+                        if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                            extraAddr += data.bname;
+                        }
+                        if (data.buildingName !== '' && data.apartment === 'Y') {
+                            extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                        }
+                        if (extraAddr !== '') {
+                            extraAddr = ' (' + extraAddr + ')';
+                        }
+                    }
+
+                    document.getElementById('addr').value = addr + extraAddr;
+                    document.getElementById('daddr').focus();
+                }
+            }).open();
+        }
+    </script>
+</body>
+</html>

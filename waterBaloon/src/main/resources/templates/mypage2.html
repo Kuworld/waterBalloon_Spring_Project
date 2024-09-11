@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html  xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/default_layout}">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/mypage.css">
+        <link rel="stylesheet" href="/css/nav.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <title>물풍선</title>
+    </head>
+  
+    <body>
+        <section layout:fragment="content">
+            <div class="bkg">
+                <div class="bkw">
+                    <h3>내 설정</h3>
+                    <div class="flex">
+                        <img src="/images/logo/rock.png"> 
+                        <a th:href="@{/user/password_check}">내 정보 관리</a>
+                    </div>
+                    <div class="flex">
+                        <img src="/images/logo/review.png"> 
+                        <a href="my_review">리뷰 관리</a>
+                    </div>
+                    <div class="flex">
+                        <img src="/images/logo/list.png"> 
+                        <a href="my_order">주문 목록</a>
+                    </div>
+                </div>
+                <div class="bkw">
+                    <h3>안내 및 문의</h3>
+                    <div class="flex">
+                        <img src="/images/logo/megaphone.png"> 
+                        <a href="my_announce">공지 사항</a>
+                    </div>
+                    <div class="flex">
+                        <img src="/images/logo/headset.png"> 
+                        <a href="my_customer">고객 센터</a>
+                    </div>
+                    <div class="flex">
+                        <img src="/images/logo/Inquiry.png"> 
+                        <a href="my_question">문의사항&요청사항</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

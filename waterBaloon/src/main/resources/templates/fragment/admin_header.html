@@ -1,0 +1,26 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+	<header class="header" th:fragment="admin_headerFragment">
+		<div id="wrap">
+			<div class="water">
+				<a th:href="@{/}"><img th:src="@{/images/logo/logo.png}"
+					width="100" height="100"></a>
+				<div>
+					<h2>관리자 페이지 입니다.</h2>
+				</div>
+				<div sec:authorize="hasRole('ROLE_ADMIN')">
+					<!--admin 로그인 한 후 -->
+					<span th:text="${#authentication.principal.username} + ' 님'"></span>
+					&nbsp; | &nbsp; <a th:href="@{/admin/dashboard}">admin</a> &nbsp; |
+					&nbsp; <a th:href="@{/admin/dashboard}">admin</a> &nbsp; | &nbsp; <a
+						th:href="@{/user/logout}">로그아웃</a>
+				</div>
+			</div>
+		</div>
+	</header>
+</body>
+</html>

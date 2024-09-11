@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+  layout:decorate="~{layouts/default_layout}">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>물풍선</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/nav.css">
+        <link rel="stylesheet" href="/css/footer.css">
+    <script src="/js/article.js"></script>
+  </head>
+
+  <body layout:fragment="content">
+    <article class="article">
+      <div class="menu">
+        <ul class="main-menu">
+          <div class="article-menu">
+            <li class="black"><a href="home" th:href="@{/}">홈</a></li>
+            <li class="small">●</li>
+          </div>
+          <div class="article-menu">
+            <li><a href="new_product" th:href="@{/new_product}">신상품</a></li>
+            <li class="hide">●</li>
+          </div>
+          <div class="article-menu">
+            <li><a href="popular_product" th:href="@{/popular_product}">인기상품</a></li>
+            <li class="hide">●</li>
+          </div>
+        </ul>
+      </div>
+    </article>
+    <section>
+      <div>
+        <div class="slider">
+          <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <div class="slide first">
+              <a href="vip"><img src="/images/baner/vip.jpg"></a>
+            </div>
+            <div class="slide first">
+              <a href="event"><img src="/images/baner/event.jpg"></a>
+            </div>
+            <div class="navigation-auto">
+              <div class="auto-btn1"></div>
+              <div class="auto-btn2"></div>
+            </div>
+          </div>
+          <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+          </div>
+        </div>
+        <div class="columnall">
+          <div class="logo">
+            <div class="column"><a th:href="@{/생수%20차_all}"><img src="/images/logo/water.png"></a>
+              <p>생수·차</p>
+            </div>
+            <div class="column"><a th:href="@{/음료_all}"><img src="/images/logo/beverage.png"></a>
+              <p>음료</p>
+            </div>
+            <div class="column"><a th:href="@{/식품_all}"><img src="/images/logo/food.png"></a>
+              <p>식품</p>
+            </div>
+            <div class="column"><a th:href="@{/생필품_all}"><img src="/images/logo/waste paper.png"></a>
+              <p>생필품</p>
+            </div>
+            <div class="column"><a th:href="@{/욕실용품_all}"><img src="/images/logo/shampoo.png"></a>
+              <p>욕실용품</p>
+            </div>
+          </div>
+        </div>
+        <div class="center">
+          <div class="leftset">
+            <p> 당신을 위한 추천상품</p>
+          </div>
+          <div>
+            <div id="slider">
+              <div class="image-box">
+                <div th:each="item : ${items}"> <a th:href="@{'/item_details/' + ${item.iNum}}"><img
+                      th:src="@{'/images/items/' + ${item.iImg1}}"></a>
+                  <div>
+                    <div class="transverse">
+                      <p th:text="${item.iMaker}"></p>
+                      <p th:text="${item.iContentDet}" class="g"></p>
+                    </div>
+                    <p th:text="${item.iContent}" class="bb"></p>
+                    <p th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'" class="b">
+                    </p>
+                  </div>
+                </div>
+                <div th:each="item : ${items}"> <a th:href="@{'/item_details/' + ${item.iNum}}"><img
+                      th:src="@{'/images/items/' + ${item.iImg1}}"></a>
+                  <div>
+                    <div class="transverse">
+                      <p th:text="${item.iMaker}"></p>
+                      <p th:text="${item.iContentDet}" class="g"></p>
+                    </div>
+                    <p th:text="${item.iContent}" class="bb"></p>
+                    <p th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'" class="b">
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="center">
+          <div class="leftset2">
+            <p>인기상품</p>
+          </div>
+          <div id="slider">
+            <div class="image-box">
+              <div th:each="item : ${items2}"><a th:href="@{'/item_details/' + ${item.iNum}}"> <img
+                    th:src="@{'/images/items/' + ${item.iImg1}}"></a>
+                <div>
+                  <div class="transverse">
+                    <p th:text="${item.iMaker}"></p>
+                    <p th:text="${item.iContentDet}" class="g"></p>
+                  </div>
+                  <p th:text="${item.iContent}" class="bb"></p>
+                  <p th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'" class="b">
+                  </p>
+                </div>
+              </div>
+              <div th:each="item : ${items2}"><a th:href="@{'/item_details/' + ${item.iNum}}"> <img
+                    th:src="@{'/images/items/' + ${item.iImg1}}"></a>
+                <div>
+                  <div class="transverse">
+                    <p th:text="${item.iMaker}"></p>
+                    <p th:text="${item.iContentDet}" class="g"></p>
+                  </div>
+                  <p th:text="${item.iContent}" class="bb"></p>
+                  <p th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'" class="b">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="center">
+          <div class="leftset2">
+            <p>인기상품</p>
+          </div>
+          <div id="slider">
+            <div class="image-box">
+              <div th:each="item : ${items3}"><a th:href="@{'/item_details/' + ${item.iNum}}"> <img
+                    th:src="@{'/images/items/' + ${item.iImg1}}"></a>
+                <div>
+                  <div class="transverse">
+                    <p th:text="${item.iMaker}"></p>
+                    <p th:text="${item.iContentDet}" class="g"></p>
+                  </div>
+                  <p th:text="${item.iContent}" class="bb"></p>
+                  <p th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'" class="b">
+                  </p>
+                </div>
+              </div>
+              <div th:each="item : ${items3}"><a th:href="@{'/item_details/' + ${item.iNum}}"> <img
+                    th:src="@{'/images/items/' + ${item.iImg1}}"></a>
+                <div>
+                  <div class="transverse">
+                    <p th:text="${item.iMaker}"></p>
+                    <p th:text="${item.iContentDet}" class="g"></p>
+                  </div>
+                  <p th:text="${item.iContent}" class="bb"></p>
+                  <p th:text="${#numbers.formatInteger(item.iPrice, 3, 'COMMA')} + '원'" class="b">
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+</html>

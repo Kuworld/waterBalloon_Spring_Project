@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layouts/admin_layout}">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 관리</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/admin_header.css}">
+    <link rel="stylesheet" th:href="@{/css/nav.css}">
+</head>
+<body layout:fragment="content">
+<div class="container mt-5">
+    <h1>회원 정보 관리</h1>
+    <form class="form-inline mb-3">
+        <input type="text" class="form-control mr-2" name="searchTerm" placeholder="검색">
+        <button type="submit" class="btn btn-primary">검색</button>
+    </form>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>번호</th>
+            <th>회원명</th>
+            <th>아이디</th>
+            <th>레벨</th>
+            <th>휴대폰</th>
+            <th>가입일</th>
+            <th>구매수</th>
+            <th>로그인</th>
+            <th>적립금</th>
+            <th>포인트</th>
+            <th>수정/삭제</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user, iterStat : ${users}">
+            <td th:text="${iterStat.count}">1</td>
+            <td th:text="${user.name}">회원명</td>
+            <td th:text="${user.username}">아이디</td>
+            <td th:text="${user.auth == 0 ? '일반회원' : '관리자'}">레벨</td>
+            <td th:text="${user.tel}">휴대폰</td>
+            <td th:text="${user.regdate != null ? #temporals.format(user.regdate, 'yyyy-MM-dd') : 'N/A'}">가입일</td>
+            <td th:text="0">구매수</td>
+            <td th:text="0">로그인</td>
+            <td th:text="0">적립금</td>
+            <td th:text="0">포인트</td>
+            <td>
+                <a th:href="@{'/admin/edit_user/' + ${user.id}}" class="btn btn-warning">수정</a>
+                <a th:href="@{'/admin/delete_user/' + ${user.id}}" class="btn btn-danger">삭제</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
