@@ -28,6 +28,41 @@
     간단한 검색: 최대한 간단한 동작으로 원하는 상품을 찾을수 있게 하였습니다.
 
 
+## 🕹️ 주요기능
+> 1. 상세보기 및 카테고리
+>     * 카테고리별 상품 검색 가능
+>     * <img src="https://github.com/user-attachments/assets/bc1df4f1-1081-490d-bfc9-90b25cf17060" width="300"> 
+>     
+>     * 개별 상품의 상세 정보 페이지 제공(상품이미지, 설명, 가격 등)
+>     * <img src="https://github.com/user-attachments/assets/6be6b85a-3435-4e1d-9c9d-7f2ec73b5b00" width="300">
+
+> 2. 장바구니 기능
+>     * 사용자들이 장바구니에 상품을 담을 수 있음
+>     * <img src="https://github.com/user-attachments/assets/0e287401-c006-43b9-912c-885d9bf5b549" width="300"> 
+>   
+>     * 장바구니에 담긴 상품의 총 금액 자동계산
+>   
+> 3. 사용자 인증, 권한 관리, 세션관리
+>     * Spring Security를 사용해 사용자 로그인/ 회원가입 기능 구현
+>     * BCryptPasswordEncoder로 비밀번호 해시화
+>     * 중복 로그인 방지를 위해 한 계정당 하나의 세션만 허용
+>     * 권한에 따라 일반 사용자와 관리자 역할 구분 (관리자는 상품 등록, 관리 가능, 회원 관리 가능)
+>     * <img src="https://github.com/user-attachments/assets/9da24113-1e57-4af4-8d6b-408e500f9eac" width="300">
+>     * <img src="https://github.com/user-attachments/assets/2dd756a8-96a2-4e6f-a1be-4dd91100a595" width="300">
+>     * <img src="https://github.com/user-attachments/assets/2242dcc2-cd61-438b-9b16-0cfaeeab3e42" width="300">
+> 4. 문의 및 답변 기능
+>     * 사용자는 상품에 대한 문의를 남길 수 있으며 관리자는 답변을 달 수 있음
+>     * 문의 등록 시간과 답변 시간이 표시됨
+>     * <img src="https://github.com/user-attachments/assets/0c31724c-0f1b-4629-ad29-9904566f9beb" width="300">
+
+## 🤔 추후 개선 사항
+> * 결제 시스템 : 현재 결제기능을 구현하지 못 하였습니다. 카카오페이 등  국내 PG사 연동 기능 추가계획이 있습니다.
+     
+
+     
+
+ 
+
 
 
 <h3> Stack 🚀 </h3>
