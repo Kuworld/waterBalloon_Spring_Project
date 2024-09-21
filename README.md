@@ -27,6 +27,25 @@
 
     간단한 검색: 최대한 간단한 동작으로 원하는 상품을 찾을수 있게 하였습니다.
 
+## 시스템 구조도
+> <img src="https://github.com/user-attachments/assets/2a2d2802-13cf-4b97-b8be-b3663fd5a356" width=900>
+>
+> * 퍼블릭페이지 : 로그인 없는 공개 페이지로, 누구나 접근할 수 있습니다.
+>
+> * 사용자페이지 : 사용자 전용 페이지로, 로그인 후 접근 가능하며, 개인화된 기능 제공
+>
+> * 관리자페이지 : 관리자가 시스템을 운영하고 관리할 수 있는 페이지, 사용자와 데이터 관리를 위한 기능을 포함
+
+
+
+
+
+## 데이터 베이스
+
+> ![image](https://github.com/user-attachments/assets/0677d374-1d52-46e3-8525-d5dc18c91b00)
+
+
+
 
 ## 🕹️ 주요기능
 > 1. 상세보기 및 카테고리
@@ -71,7 +90,7 @@
 
 <h4>Environment</h4>
 
-<img src="https://img.shields.io/badge/eclipseide-2C2255?style=for-the-badge&logo=eclipseide&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
+<img src="https://img.shields.io/badge/STS4-6DB33F?style=for-the-badge&logo=spring&logoColor=white"> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181717?style=for-the-badge&logo=github&logoColor=white">
 
 <h4> Development </h4>
 
