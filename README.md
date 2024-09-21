@@ -74,6 +74,53 @@
 >     * 문의 등록 시간과 답변 시간이 표시됨
 >     * <img src="https://github.com/user-attachments/assets/0c31724c-0f1b-4629-ad29-9904566f9beb" width="300">
 
+### 특징 
+> ```HTML
+>    <!-- Header fragment -->
+>    <th:block layout:fragment="css"></th:block>
+>    <th:block th:replace="~{fragment/header :: headerFragment}"></th:block>
+>     
+>    <!-- Content fragment -->
+>    <th:block layout:fragment="content"></th:block>
+>    <th:block th:replace="~{fragment/nav :: navFragment}"></th:block>
+>    
+>    <!-- Footer fragment -->
+>    <th:block th:replace="~{fragment/footer :: footerFragment}"></th:block>
+> ```
+>  * Thymeleaf의 fragment 기능을 활용하여 사이트의 공통 레이아웃을 효율적으로 관리하였습니다. fragment를 사용하여 헤너, 푸터, 네비게이션 바와 같은 공통 요소를 독립적인 템플릿으로 분리하고, 각 페이지에서 이를 불러와 사용하는 방식으로 개발했습니다.
+>    >
+>    > *  공통 요소를 한 번만 정의하여 코드의 중복을 최소화 하고자 노력하였습니다.
+>    >
+>    > *  공통 요소가 변경될 경우, 하나의 fragment 파일만 수정하면 모든 페이지에 적용 되도록 하여 유지보수가 용이하도록 노력하였습니다.
+
+> ```HTML
+> <div sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')"><!-- 로그인 한 후 -->
+>       <span th:text="${#authentication.principal.username} + ' 님'"></span>
+>       &nbsp; | &nbsp; <a th:href="@{/user/cart}">장바구니</a>
+>       &nbsp; | &nbsp; <a th:href="@{/user/mypage2}">마이페이지</a>
+>       &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
+> </div>
+>                
+> <div sec:authorize="hasRole('ROLE_ADMIN')"><!--admin 로그인 한 후 -->
+>       <span th:text="${#authentication.principal.username} + ' 님'"></span>
+>       &nbsp; | &nbsp; <a th:href="@{/}"> 홈 </a>
+>       &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
+> </div>
+>                
+> <div sec:authorize="isAnonymous()"><!-- 로그인 하기 전 -->
+>    <a th:href="@{/user/login}">로그인</a>
+>    &nbsp; | &nbsp; <a th:href="@{/user/join}">회원가입</a>
+> </div>
+> ```
+> * 프로젝트에서 Thymeleaf와 Spring Security(sec:authorize)를 이용하여 사용자 인증 및 권한에 따라 동적으로 메뉴를 구성하는 부분을 구현하였습니다.
+> 
+>     > * 로그인 전: 비회원에게는 로그인 및 회원가입 버튼만 노출하여, 가입을 유도하고 불필요한 메뉴는 숨겼습니다.
+>     >
+>     > * 로그인 후 (일반 사용자): 로그인한 사용자에게는 장바구니, 마이페이지, 로그아웃 메뉴를 제공하여 개인화된 서비스를 이용할 수 있도록 했습니다.
+>     >
+>     > * 로그인 후 (관리자): 관리자는 일반 사용자와 다른 메뉴를 표시하여, 관리 기능에 쉽게 접근할 수 있도록 했습니다.
+
+
 ## 🤔 추후 개선 사항
 > * 결제 시스템 : 현재 결제기능을 구현하지 못 하였습니다. 카카오페이 등  국내 PG사 연동 기능 추가계획이 있습니다.
 
