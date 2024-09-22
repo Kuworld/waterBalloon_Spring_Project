@@ -11,13 +11,13 @@
 
 <h3> 프로젝트 소개 </h3>
 
-     휴대폰 어플리케이션을 웹 페이지로 만들어 보자는 생각에서 
+> 휴대폰 어플리케이션을 웹 페이지로 만들어 보자는 생각에서 
      프로젝트를 시작하였습니다.
-     
-     사용자가 원하는 상품을 검색할 때 여러 유사 상품이 함께 
-     검색되어 원하는 상품을 다시 찾아야 하는 번거로움을 해결
-     하고자 시작되었습니다. 최대한 간편하게 원하는 상품을 
-     찾을 수 있는 쇼핑몰을 개발하는 것이 목표입니다.
+> 
+> 사용자가 원하는 상품을 검색할 때 여러 유사 상품이 함께 
+> 검색되어 원하는 상품을 다시 찾아야 하는 번거로움을 해결
+> 하고자 시작되었습니다.
+> 최대한 간편하게 원하는 상품을 찾을 수 있는 쇼핑몰을 개발하는 것이 목표입니다.
 
 <h3> 목  표 </h3>
 
@@ -50,15 +50,18 @@
 ## 🕹️ 주요기능
 > 1. 상세보기 및 카테고리
 >     * 카테고리별 상품 검색 가능합니다
->     * <img src="https://github.com/user-attachments/assets/bc1df4f1-1081-490d-bfc9-90b25cf17060" width="300"> 
+> 
+> <img src="https://github.com/user-attachments/assets/bc1df4f1-1081-490d-bfc9-90b25cf17060" width="300"> 
 >     
 >     * 개별 상품의 상세 정보 페이지 제공(상품이미지, 설명, 가격 등)
->     * <img src="https://github.com/user-attachments/assets/6be6b85a-3435-4e1d-9c9d-7f2ec73b5b00" width="300">
+> 
+> <img src="https://github.com/user-attachments/assets/6be6b85a-3435-4e1d-9c9d-7f2ec73b5b00" width="300">
 
 > 2. 장바구니 기능
 >     * 사용자들이 장바구니에 상품을 담을 수 있습니다.
->     * <img src="https://github.com/user-attachments/assets/0e287401-c006-43b9-912c-885d9bf5b549" width="300"> 
+> <img src="https://github.com/user-attachments/assets/0e287401-c006-43b9-912c-885d9bf5b549" width="300"> 
 >   
+>
 >     * 장바구니에 담긴 상품의 총 금액 자동계산
 >   
 > 3. 사용자 인증, 권한 관리, 세션관리
@@ -75,58 +78,58 @@
 >     * <img src="https://github.com/user-attachments/assets/0c31724c-0f1b-4629-ad29-9904566f9beb" width="300">
 
 ### 특징 
-> ```HTML
->    <!-- Header fragment -->
->    <th:block layout:fragment="css"></th:block>
->    <th:block th:replace="~{fragment/header :: headerFragment}"></th:block>
->     
->    <!-- Content fragment -->
->    <th:block layout:fragment="content"></th:block>
->    <th:block th:replace="~{fragment/nav :: navFragment}"></th:block>
->    
->    <!-- Footer fragment -->
->    <th:block th:replace="~{fragment/footer :: footerFragment}"></th:block>
-> ```
->  * Thymeleaf의 fragment 기능을 활용하여 사이트의 공통 레이아웃을 효율적으로 관리하였습니다. fragment를 사용하여 헤더, 푸터, 네비게이션 바와 같은 공통 요소를 독립적인 템플릿으로 분리하고, 각 페이지에서 이를 불러와 사용하는 방식으로 개발했습니다.
->    >
->    > *  공통 요소를 한 번만 정의하여 코드의 중복을 최소화 하였고, 공통 요소가 변경될 경우, 하나의 fragment 파일만 수정하면 모든 페이지에 적용 되도록 하여 유지보수가 용이하도록 노력하였습니다.
->    >
->    > *  일반 사용자와 관리자의 레이아웃을 나누어 관리자 로그인 시 관리자 전용 메뉴가 나타나도록 하였습니다.
+ ```HTML
+    <!-- Header fragment -->
+    <th:block layout:fragment="css"></th:block>
+    <th:block th:replace="~{fragment/header :: headerFragment}"></th:block>
+     
+    <!-- Content fragment -->
+    <th:block layout:fragment="content"></th:block>
+    <th:block th:replace="~{fragment/nav :: navFragment}"></th:block>
+    
+    <!-- Footer fragment -->
+    <th:block th:replace="~{fragment/footer :: footerFragment}"></th:block>
+ ```
+  * Thymeleaf의 fragment 기능을 활용하여 사이트의 공통 레이아웃을 효율적으로 관리하였습니다. fragment를 사용하여 헤더, 푸터, 네비게이션 바와 같은 공통 요소를 독립적인 템플릿으로 분리하고, 각 페이지에서 이를 불러와 사용하는 방식으로 개발했습니다.
+    >
+    > *  공통 요소를 한 번만 정의하여 코드의 중복을 최소화 하였고, 공통 요소가 변경될 경우, 하나의 fragment 파일만 수정하면 모든 페이지에 적용 되도록 하여 유지보수가 용이하도록 노력하였습니다.
+    >
+    > *  일반 사용자와 관리자의 레이아웃을 나누어 관리자 로그인 시 관리자 전용 메뉴가 나타나도록 하였습니다.
 
 
-> ```HTML
-> <div sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')"><!-- 로그인 한 후 -->
->       <span th:text="${#authentication.principal.username} + ' 님'"></span>
->       &nbsp; | &nbsp; <a th:href="@{/user/cart}">장바구니</a>
->       &nbsp; | &nbsp; <a th:href="@{/user/mypage2}">마이페이지</a>
->       &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
-> </div>
->                
-> <div sec:authorize="hasRole('ROLE_ADMIN')"><!--admin 로그인 한 후 -->
->       <span th:text="${#authentication.principal.username} + ' 님'"></span>
->       &nbsp; | &nbsp; <a th:href="@{/}"> 홈 </a>
->       &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
-> </div>
->                
-> <div sec:authorize="isAnonymous()"><!-- 로그인 하기 전 -->
->    <a th:href="@{/user/login}">로그인</a>
->    &nbsp; | &nbsp; <a th:href="@{/user/join}">회원가입</a>
-> </div>
-> ```
-> * 프로젝트에서 Thymeleaf와 Spring Security(sec:authorize)를 이용하여 사용자 인증 및 권한에 따라 동적으로 메뉴를 구성하는 부분을 구현하였습니다.
-> 
->     > * 로그인 전: 비회원에게는 로그인 및 회원가입 버튼만 노출하여, 가입을 유도하고 불필요한 메뉴는 숨겼습니다.
->     >      > ![image](https://github.com/user-attachments/assets/f67489bd-22da-49a3-acee-31630b563859)
->     >  
->     >
->     >
->     > * 로그인 후 (일반 사용자): 로그인한 사용자에게는 장바구니, 마이페이지, 로그아웃 메뉴를 제공하여 개인화된 서비스를 이용할 수 있도록 했습니다.
->     >
->     >      > ![image](https://github.com/user-attachments/assets/e841fa6c-badd-497b-940e-5098d4f4e321)
->     >
->     >
->     > * 로그인 후 (관리자): 관리자는 일반 사용자와 다른 메뉴를 표시하여, 관리 기능에 쉽게 접근할 수 있도록 했습니다.
->     >      > ![image](https://github.com/user-attachments/assets/e6f4d3c0-addd-40b0-b6a6-f8f161ff9fac)
+ ```HTML
+ <div sec:authorize="isAuthenticated() and !hasRole('ROLE_ADMIN')"><!-- 로그인 한 후 -->
+       <span th:text="${#authentication.principal.username} + ' 님'"></span>
+       &nbsp; | &nbsp; <a th:href="@{/user/cart}">장바구니</a>
+       &nbsp; | &nbsp; <a th:href="@{/user/mypage2}">마이페이지</a>
+       &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
+ </div>
+                
+ <div sec:authorize="hasRole('ROLE_ADMIN')"><!--admin 로그인 한 후 -->
+       <span th:text="${#authentication.principal.username} + ' 님'"></span>
+       &nbsp; | &nbsp; <a th:href="@{/}"> 홈 </a>
+       &nbsp; | &nbsp; <a th:href="@{/user/logout}">로그아웃</a>
+ </div>
+                
+ <div sec:authorize="isAnonymous()"><!-- 로그인 하기 전 -->
+    <a th:href="@{/user/login}">로그인</a>
+    &nbsp; | &nbsp; <a th:href="@{/user/join}">회원가입</a>
+ </div>
+ ```
+ * 프로젝트에서 Thymeleaf와 Spring Security(sec:authorize)를 이용하여 사용자 인증 및 권한에 따라 동적으로 메뉴를 구성하는 부분을 구현하였습니다.
+ 
+     > * 로그인 전: 비회원에게는 로그인 및 회원가입 버튼만 노출하여, 가입을 유도하고 불필요한 메뉴는 숨겼습니다.
+     >      > ![image](https://github.com/user-attachments/assets/f67489bd-22da-49a3-acee-31630b563859)
+     >  
+     >
+     >
+     > * 로그인 후 (일반 사용자): 로그인한 사용자에게는 장바구니, 마이페이지, 로그아웃 메뉴를 제공하여 개인화된 서비스를 이용할 수 있도록 했습니다.
+     >
+     >      > ![image](https://github.com/user-attachments/assets/e841fa6c-badd-497b-940e-5098d4f4e321)
+     >
+     >
+     > * 로그인 후 (관리자): 관리자는 일반 사용자와 다른 메뉴를 표시하여, 관리 기능에 쉽게 접근할 수 있도록 했습니다.
+     >      > ![image](https://github.com/user-attachments/assets/e6f4d3c0-addd-40b0-b6a6-f8f161ff9fac)
 
 
 
