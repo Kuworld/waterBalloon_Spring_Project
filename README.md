@@ -51,15 +51,15 @@
 > 1. 상세보기 및 카테고리
 >     * 카테고리별 상품 검색 가능합니다
 > 
-> <img src="https://github.com/user-attachments/assets/bc1df4f1-1081-490d-bfc9-90b25cf17060" width="300"> 
+> <img src="https://github.com/user-attachments/assets/bc1df4f1-1081-490d-bfc9-90b25cf17060" width="500"> 
 >     
 >     * 개별 상품의 상세 정보 페이지 제공(상품이미지, 설명, 가격 등)
 > 
-> <img src="https://github.com/user-attachments/assets/6be6b85a-3435-4e1d-9c9d-7f2ec73b5b00" width="300">
+> <img src="https://github.com/user-attachments/assets/6be6b85a-3435-4e1d-9c9d-7f2ec73b5b00" width="500">
 
 > 2. 장바구니 기능
 >     * 사용자들이 장바구니에 상품을 담을 수 있습니다.
-> <img src="https://github.com/user-attachments/assets/0e287401-c006-43b9-912c-885d9bf5b549" width="300"> 
+> <img src="https://github.com/user-attachments/assets/0e287401-c006-43b9-912c-885d9bf5b549" width="500"> 
 >   
 >
 >     * 장바구니에 담긴 상품의 총 금액 자동계산
@@ -69,13 +69,13 @@
 >     * BCryptPasswordEncoder로 비밀번호 해시화
 >     * 중복 로그인 방지를 위해 한 계정당 하나의 세션만 허용
 >     * 권한에 따라 일반 사용자와 관리자 역할 구분 (관리자는 상품 등록, 관리 가능, 회원 관리 가능)
->     * <img src="https://github.com/user-attachments/assets/9da24113-1e57-4af4-8d6b-408e500f9eac" width="300">
->     * <img src="https://github.com/user-attachments/assets/2dd756a8-96a2-4e6f-a1be-4dd91100a595" width="300">
->     * <img src="https://github.com/user-attachments/assets/2242dcc2-cd61-438b-9b16-0cfaeeab3e42" width="300">
+>     * <img src="https://github.com/user-attachments/assets/9da24113-1e57-4af4-8d6b-408e500f9eac" width="500">
+>     * <img src="https://github.com/user-attachments/assets/2dd756a8-96a2-4e6f-a1be-4dd91100a595" width="500">
+>     * <img src="https://github.com/user-attachments/assets/2242dcc2-cd61-438b-9b16-0cfaeeab3e42" width="500">
 > 4. 문의 및 답변 기능
 >     * 사용자는 상품에 대한 문의를 남길 수 있으며 관리자는 답변을 달 수 있습니다
 >     * 문의 등록 시간과 답변 시간이 표시됩니다다
->     * <img src="https://github.com/user-attachments/assets/0c31724c-0f1b-4629-ad29-9904566f9beb" width="300">
+>     * <img src="https://github.com/user-attachments/assets/0c31724c-0f1b-4629-ad29-9904566f9beb" width="500">
 
 ### 특징 
  ```HTML
