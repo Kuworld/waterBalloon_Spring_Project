@@ -131,6 +131,18 @@
      > * 로그인 후 (관리자): 관리자는 일반 사용자와 다른 메뉴를 표시하여, 관리 기능에 쉽게 접근할 수 있도록 했습니다.
      >      > ![image](https://github.com/user-attachments/assets/e6f4d3c0-addd-40b0-b6a6-f8f161ff9fac)
 
+* 회원가입시 회원의 `password`를 `BCryptPasswordEncoder()` 를 통해 암호화 하여 DB에 저장되게 하여 보안에 신경썼습니다.
+```java
+ @Bean
+ public PasswordEncoder passwordEncoder() {
+     return new BCryptPasswordEncoder();
+    }
+```
+  ![image](https://github.com/user-attachments/assets/c9db50cc-d53d-43ca-9dde-7f73a150ac2c)
+
+  
+
+
 
 
 
